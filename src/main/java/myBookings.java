@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -54,5 +55,14 @@ public class myBookings {
 		Assert.assertEquals("Bookings - PHPTRAVELS", driver.getTitle());
 		
 		driver.findElement(By.xpath("//div[@class='sidebar-menu-wrap']//li//a[contains(text(),' My Bookings')]")).click();
+		System.out.println("Clicou no MyBookings");
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebElement Element = driver.findElement(By.xpath("//i[@class='la la-hotel mr-1 font-size-18']/ancestor::tr/td//a[contains(text(),' View Voucher')]"));
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		
+		driver.findElement(By.xpath("//i[@class='la la-hotel mr-1 font-size-18']/ancestor::tr/td//a[contains(text(),' View Voucher')]")).click();
+		System.out.println("Clicou no View Voucher");
+		
 	}
 }
